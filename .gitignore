@@ -1,0 +1,6 @@
+env
+.vscode
+dbfile1.db
+__pycache__/
+*.py[cod]
+
