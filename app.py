@@ -1,23 +1,22 @@
-import os 
-from src.models.database import db
-from src.Menu import Menu
-from src.models.Vault import Vault
-from src.models.Accounts import Accounts
+from src.Account.Account import Account
+from src.Vault.VaultMenu import VaultMenu
+from src.Session import SESSIONS
+
 
 def main():
-    if(not os.path.isfile("dbfile1.db")):
-        db.createDb()    
-    menu=Menu()
-    menu.init()
-    
-    
-   
-   
-
-
-   
+    while True:
+        if len(SESSIONS)==0:
+            vault = VaultMenu()
+            vault.init()
+        else:
+            account=Account()
+            print(account.display())
 
 
 
-if __name__=="__main__":
-  main()
+
+
+
+main()
+
+
