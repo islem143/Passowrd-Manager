@@ -1,6 +1,6 @@
 env
 .vscode
-dbfile1.db
+*.db
 __pycache__/
 *.py[cod]
 
