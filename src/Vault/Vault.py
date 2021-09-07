@@ -1,7 +1,6 @@
 from .VaultModel import Vault as VaultModel
 from ..Database.Database import Database
-
-import bcrypt
+from ..Hash.Hash import Hash
 
 class Vault:
       db=Database("test")
@@ -14,9 +13,8 @@ class Vault:
 
 
       def hash(self):
-          salt=bcrypt.gensalt()
-          hashedpassword=bcrypt.hashpw(self.masterpassword.encode(),salt)
-          return (hashedpassword,salt)
+          hash=Hash()
+          return hash.hash(self.masterpassword)
           
       def save(self,hashedpassword,salt):
           vault=VaultModel(name=self.name,masterpassword=hashedpassword,salt=salt)
