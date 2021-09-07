@@ -10,14 +10,8 @@ class VaultMenu(Menu):
 
     def init(self):
         vault_actions = VaultActions()
-        # self.display()
-        # choice=self.get_choice()
-        # name,masterpassword=self.promts(INIT_PROMTS[choice]())
-        # INIT_ACTIONS[choice](name,masterpassword)
-        # return self.init()
         self.display()
         choice = self.get_choice()
-       
         if(choice == "1"):
             name, masterpassword = self.promts([{"message": "enter the name of the vault", "hidden": False}, {
             "message": "enter the masterpassword",

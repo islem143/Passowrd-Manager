@@ -5,9 +5,11 @@ Base=declarative_base()
 class Database:
 
     def __init__(self,name):
-     db=f"sqlite+pysqlite:///{name}.db"
-     self.engine=create_engine(db)
- 
+     self.url=f"sqlite+pysqlite:///{name}.db"
+     self.engine=create_engine(self.url)
+
+
+
     def get_session(self):
         """
         return a Session
