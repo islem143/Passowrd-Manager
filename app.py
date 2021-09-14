@@ -1,22 +1,7 @@
-from src.Account.Account import Account
-from src.Vault.VaultMenu import VaultMenu
-from src.Session import SESSIONS
+from src.globals import GLOBAL
 
+GLOBAL["db"]="test.db"
 
-def main():
-    while True:
-        if len(SESSIONS)==0:
-            vault = VaultMenu()
-            vault.init()
-        else:
-            account=Account()
-          
-
-
-
-
-
+from src.bin import main
 
 main()
-
-
