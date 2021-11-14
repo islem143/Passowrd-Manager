@@ -1,8 +1,9 @@
-from re import T
+
 from peewee import DatabaseError, DoesNotExist
 from ...Models import Vault as VaultModel
 from ...lib import Hash
 from ... import GLOBAL
+
 
 class Vault:
 
@@ -25,14 +26,13 @@ class Vault:
             vault = Vault.get_vault(name)
             if(not self.compare_password(masterpassword.encode(), vault.masterpassword.encode())):
                 print(f"Invalid password for{name}")
-                return
-            print(f"Login successfully for vault {name}")  
-            GLOBAL["session"]=True
-             
+                return False
+            print(f"Login successfully for vault {name}")
+            GLOBAL["session"] = True
+
         except DoesNotExist as e:
             print(f"Vault: {name} does not exists")
             return
-
 
     @classmethod
     def get_vault(self, name):

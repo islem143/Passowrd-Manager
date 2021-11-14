@@ -18,9 +18,11 @@ class VaultMenu(Menu):
             "1": vault.create_vault,
             "2": vault.connect_to_vault
         }
-        choice = self.get_choice(choices)
 
-        if choice in choices:
+        choice = self.get_choice(choices)
+        if(not choices):
+            self.init()
+        elif choice in choices:
             name = self.promt("enter the name of the vault")
-            masterpassword = self.promt("enter the masterpassword",True)
+            masterpassword = self.promt("enter the masterpassword", True)
             di[choice](name, masterpassword)

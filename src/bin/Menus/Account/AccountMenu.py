@@ -15,11 +15,12 @@ class AccountMenu(Menu):
         choices = [i for i in list(CHOICES.keys())]
         self.display_choices(CHOICES)
         choice=self.get_choice(choices)
-        # di = {
-        #     "1": account.create_vault,
-        #     "2": account.connect_to_vault
-        # }
-        print(choice)
+
+        di = {
+            "1": account.create_vault,
+            "2": account.connect_to_vault
+        }
+     
  
         
      

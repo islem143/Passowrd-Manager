@@ -1,6 +1,6 @@
 from .. import GLOBAL
 from .Menus import VaultMenu
-from .Menus import AccountMenu
+#from .Menus import AccountMenu
 from ..Models import setup
 def main():
     
@@ -12,8 +12,9 @@ def main():
             vault = VaultMenu()
             vault.init()
         else:
-            account = AccountMenu()
-            account.init()
+            #account = AccountMenu()
+           # account.init()
+           pass
 
 
 main()
