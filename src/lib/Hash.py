@@ -16,7 +16,7 @@ class Hash:
     """
 
 
-
+    @classmethod  
     def hash(self,string:str) -> tuple:
           """
           Hash a given sring
@@ -34,7 +34,7 @@ class Hash:
           salt=bcrypt.gensalt()
           hashedpassword=bcrypt.hashpw(string.encode(),salt)
           return (hashedpassword,salt)
-
+    @classmethod  
     def compare(self,string:str,to_compare:bytes) -> bool:
         """
         compare a password to it hash

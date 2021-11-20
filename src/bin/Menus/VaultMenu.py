@@ -1,6 +1,6 @@
 from .Menu import Menu
 from ..Controllers import Vault
-
+from .AccountMenu import AccountMenu 
 
 CHOICES = {
     "1": "create a database/vault",
@@ -14,15 +14,17 @@ class VaultMenu(Menu):
         vault = Vault()
         choices = [i for i in list(CHOICES.keys())]
         self.display_choices(CHOICES)
-        di = {
-            "1": vault.create_vault,
-            "2": vault.connect_to_vault
-        }
-
         choice = self.get_choice(choices)
         if(not choices):
             self.init()
-        elif choice in choices:
-            name = self.promt("enter the name of the vault")
-            masterpassword = self.promt("enter the masterpassword", True)
-            di[choice](name, masterpassword)
+        name = self.promt("enter the name of the vault")
+        masterpassword = self.promt("enter the masterpassword", True)
+        if(choice == "1"):
+            vault.create_vault(name, masterpassword)
+        elif(choice == "2"):
+            if(vault.connect_to_vault(name, masterpassword)):
+                 accountMenu=AccountMenu()
+                 accountMenu.init()
+                 
+
+

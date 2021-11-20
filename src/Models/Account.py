@@ -1,5 +1,5 @@
 from peewee import CharField, AutoField, TextField
-from .Base import BaseModel
+from . import BaseModel
 
 class Account(BaseModel):
 

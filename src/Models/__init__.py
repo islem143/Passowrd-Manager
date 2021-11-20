@@ -1,11 +1,17 @@
-from peewee import SqliteDatabase,Model,AutoField,CharField
-from .Base import database,BaseModel
+from peewee import SqliteDatabase, Model
+from .. import GLOBAL
+
+
+GLOBAL["db"] = "test.db"
+database = SqliteDatabase(GLOBAL["db"])
+database.connect()
+
+
+class BaseModel(Model):
+    class Meta:
+        database = database
+
 from .Vault import Vault
-
-
-
-
-def setup():
-    database.connect()
-    with database:
-        database.create_tables([Vault])
+from .Account import Account
+with database:
+    database.create_tables([Vault,Account])

@@ -1,5 +1,5 @@
 from peewee import CharField, AutoField
-from .Base import BaseModel
+from . import BaseModel
 
 
 class Vault(BaseModel):
