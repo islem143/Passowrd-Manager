@@ -23,6 +23,7 @@ class VaultMenu(Menu):
             vault.create_vault(name, masterpassword)
         elif(choice == "2"):
             if(vault.connect_to_vault(name, masterpassword)):
+                 
                  accountMenu=AccountMenu()
                  accountMenu.init()
                  

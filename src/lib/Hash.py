@@ -1,9 +1,10 @@
-import bcrypt
+import hashlib
+import uuid
 
 
 class Hash:
     """
-    A class used to hash passwords using bcrypt pakcage
+    A class used to hash passwords using sha246
 
     ...
     Attributes
@@ -15,27 +16,27 @@ class Hash:
          hash a string
     """
 
+    @classmethod
+    def hash(self, string: str) -> tuple:
+        """
+        Hash a given sring
+        Parameters
+        ----------
+        string : str
+           the string to be hashed
 
-    @classmethod  
-    def hash(self,string:str) -> tuple:
-          """
-          Hash a given sring
-          Parameters
-          ----------
-          string : str
-             the string to be hashed
+        Returns
+        -------
+        tuple
+           a tuple which contains the hashed string and it salt  
+        """
+        salt = uuid.uuid4().hex
+        hash = hashlib.sha256(salt.encode()+string.encode()).hexdigest()
 
-          Returns
-          -------
-          tuple
-             a tuple which contains the hashed string and it salt  
-          """
+        return (hash, salt)
 
-          salt=bcrypt.gensalt()
-          hashedpassword=bcrypt.hashpw(string.encode(),salt)
-          return (hashedpassword,salt)
-    @classmethod  
-    def compare(self,string:str,to_compare:bytes) -> bool:
+    @classmethod
+    def compare(self, string: str,salt: str, hash: str) -> bool:
         """
         compare a password to it hash
 
@@ -43,12 +44,12 @@ class Hash:
         ----------
           string : str
              the string to be hashed
-          to_compare: : bytes
+          to_compare: : str
              the hashed string
-            
+
         Returns
         -------
           bool
              True if the string match to to_compare hashed value 
         """
-        return bcrypt.checkpw(string,to_compare)
+        return hash==hashlib.sha256(salt.encode()+string.encode()).hexdigest()

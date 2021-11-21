@@ -18,13 +18,13 @@ class Vault:
         print(f"vault created for {name} with {masterpassowrd}")
         return vault
 
-    def compare_password(self, masterpassword, hashedpassword):
-        return Hash.compare(masterpassword, hashedpassword)
+    def compare_password(self, masterpassword, salt,hashedpassword):
+        return Hash.compare(masterpassword,salt, hashedpassword)
 
     def connect_to_vault(self, name, masterpassword):
         try:
             vault = Vault.get_vault(name)
-            if(not self.compare_password(masterpassword.encode(), vault.masterpassword.encode())):
+            if(not self.compare_password(masterpassword,vault.salt, vault.masterpassword)):
                 print(f"Invalid password for{name}")
                 return False
             print(f"Login successfully for vault {name}")
