@@ -1,4 +1,3 @@
-
 from ..Controllers.Account import Account
 from .Menu import Menu
 
@@ -9,22 +8,30 @@ CHOICES = {
 }
 
 
-class AccountMenu(Menu):
+def print_account_detail( account):
+    print("------Account------")
+    print(f"name: {account.name}")
+    print(f"url: {account.url}")
+    print(f"notes: {account.notes}")
+    print(f"password: {account.password}")
+    print()
 
-    def init(self):
-        account = Account()
-        choices = [i for i in list(CHOICES.keys())]
-        self.display_choices(CHOICES)
-        choice = self.get_choice(choices)
-        if(choice == "1"):
-            name = self.promt("account name")
-            url = self.promt("account url")
-            password = self.promt("account password", True)
-            notes = self.promt("account notes")
-            account.create_account(name, url, password, notes)
-        elif(choice == "2"):
-            name = self.promt("account name")
-            account.get_account(name)
-        elif(choice == "3"):
-            account.list_accounts()
-        self.init()
+
+def account_menu():
+    account = Account()
+    choices = [i for i in list(CHOICES.keys())]
+    Menu.display_choices(CHOICES)
+    choice = Menu.get_choice(choices)
+    if(choice == "1"):
+        name = Menu.promt("account name")
+        url = Menu.promt("account url")
+        password = Menu.promt("account password", True)
+        notes = Menu.promt("account notes")
+        account.create_account(name, url, password, notes)
+    elif(choice == "2"):
+        name = Menu.promt("account name")
+        account = account.get_account(name)
+        print_account_detail(account)
+    elif(choice == "3"):
+        accounts = account.list_accounts()
+    # Menu.init()

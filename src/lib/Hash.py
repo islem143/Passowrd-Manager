@@ -36,7 +36,7 @@ class Hash:
         return (hash, salt)
 
     @classmethod
-    def compare(self, string: str,salt: str, hash: str) -> bool:
+    def compare(self, string: str, salt: str, hash: str) -> bool:
         """
         compare a password to it hash
 
@@ -52,4 +52,4 @@ class Hash:
           bool
              True if the string match to to_compare hashed value 
         """
-        return hash==hashlib.sha256(salt.encode()+string.encode()).hexdigest()
+        return hash == hashlib.sha256(salt.encode()+string.encode()).hexdigest()

@@ -1,12 +1,18 @@
-from .. import GLOBAL
-from .Menus import VaultMenu
-#from .Menus import AccountMenu
+
+
+from ..lib.Util import Util
+from .Menus import vault_menu
+from .Menus import account_menu
 
 
 def main():
+
     while True:
-        vault = VaultMenu()
-        vault.init()
+        if(Util.is_connected()):
+            account_menu()
+        else:
+
+            vault_menu()
 
 
 main()

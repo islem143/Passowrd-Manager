@@ -6,8 +6,8 @@ import hashlib
 class Encryption:
 
     def __init__(self, key):
-        self.key = hashlib.sha256(key.encode()).digest()
-        
+        #self.key = hashlib.sha256(key.encode()).digest()
+        self.key=key
 
 
     def encrypt(self, raw):
@@ -24,3 +24,7 @@ class Encryption:
         cipher = AES.new(self.key, AES.MODE_CBC, iv)
         pt = unpad(cipher.decrypt(ct), AES.block_size)
         return "the message is", pt.decode()
+
+key = b'Sixteen byte key'
+enc=Encryption(key)
+print(enc.encrypt(b"qsd"))

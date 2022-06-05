@@ -4,19 +4,21 @@ import sys
 
 class Menu:
 
-    def get_exit_choice_number(self, choices):
+    def get_exit_choice_number(choices):
         last_number_value = int(choices[len(choices)-1])
         return str(last_number_value+1)
 
-    def display_choices(self, choices):
+    @staticmethod
+    def display_choices(choices):
 
         for (i, q) in choices.items():
             print(f"{i}-{q}")
-        exit_choice_number = self.get_exit_choice_number(list(choices.keys()))
+        exit_choice_number = Menu.get_exit_choice_number(list(choices.keys()))
         print(f"{exit_choice_number}-exit")
 
-    def get_choice(self, choices):
-        exit_choice_number = self.get_exit_choice_number(choices)
+    @staticmethod
+    def get_choice(choices):
+        exit_choice_number = Menu.get_exit_choice_number(choices)
         choices.append(exit_choice_number)
         res = input("Choose an option")
 
@@ -28,7 +30,8 @@ class Menu:
         print("please enter a valid choice")
         return False
 
-    def promt(self, text, hidden=False):
+    @staticmethod
+    def promt(text, hidden=False):
         if hidden == True:
             res = getpass(text)
             return res

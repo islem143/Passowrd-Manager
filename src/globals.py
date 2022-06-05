@@ -1,5 +1,6 @@
-GLOBAL={
-    "key":None,
-    "session":None,
-    "db":None
+GLOBAL = {
+    "user": None,
+    "key": None,
+    "session": None,
+    "db": None
 }
