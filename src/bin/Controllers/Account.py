@@ -45,6 +45,6 @@ class Account:
 
     def list_accounts(self):
         accounts = [account for account in AccountModel.select()]
-        for a in accounts:
+        
             
         return accounts

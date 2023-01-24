@@ -17,8 +17,8 @@ def print_account_detail(account):
     print()
 
 def print_accounts(accounts):
-    accounts=[[account] for account in accounts]
-    print(tabulate(accounts, headers=["Name","Url"]))
+    accounts=[[account.name,account.url,account.notes] for account in accounts]
+    print(tabulate(accounts, headers=["Name","Url","notes"]))
     
     
 def account_menu():
