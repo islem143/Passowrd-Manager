@@ -28,7 +28,7 @@ class Vault:
             if(not self.compare_password(masterpassword, vault.salt, vault.masterpassword)):
                 print(f"Invalid password for{name}")
                 return False
-            print(f"Login successfully for vault {name}")
+            print(f"*-- Login successfully for vault {name} --* ")
             Util.set_global("key", vault.masterpassword)
             Util.set_global("user", vault.name)
             return True

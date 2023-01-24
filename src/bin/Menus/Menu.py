@@ -20,14 +20,14 @@ class Menu:
     def get_choice(choices):
         exit_choice_number = Menu.get_exit_choice_number(choices)
         choices.append(exit_choice_number)
-        res = input("Choose an option")
+        res = input("Choose an option ")
 
         for c in choices:
             if str(res) == exit_choice_number:
                 sys.exit()
             if str(c) == str(res):
                 return str(c)
-        print("please enter a valid choice")
+        print("Please enter a valid choice")
         return False
 
     @staticmethod

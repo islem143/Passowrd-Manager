@@ -11,4 +11,4 @@ class Account(BaseModel):
     notes = TextField()
 
     def __repr__(self):
-        return f"account(id={self.id!r}, name={self.name!r},masterPassword={self.url!r},password={self.password})"
+        return f"account(id={self.id!r}, name={self.name!r},url={self.url!r},password={self.password})"

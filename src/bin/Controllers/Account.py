@@ -32,15 +32,19 @@ class Account:
             account = AccountModel.get(AccountModel.name == name)
             key = GLOBAL["key"]
             key += GLOBAL["user"]
-            #enc = Encryption(key)
-            # password=enc.decrypt(account.password)
+            enc = Encryption(key)
+            password = enc.decrypt(account.password)
+            account.password = password[1]
             return account
-            # self.print_account_detail(account)
+
         except DoesNotExist:
             print()
             print(f"account {name} does not exits")
             print()
+            return None
 
     def list_accounts(self):
-        accounts = AccountModel.select()
+        accounts = [account for account in AccountModel.select()]
+        for a in accounts:
+            
         return accounts
