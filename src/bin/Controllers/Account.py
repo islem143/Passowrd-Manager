@@ -44,6 +44,7 @@ class Account:
             return None
 
     def list_accounts(self):
+        # To do add where vault is the current vault
         accounts = [account for account in AccountModel.select()]
         
             
